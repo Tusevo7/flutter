@@ -27,6 +27,7 @@ import 'package:flutter_tools/src/ios/iproxy.dart';
 import 'package:flutter_tools/src/ios/mac.dart';
 import 'package:flutter_tools/src/ios/xcode_debug.dart';
 import 'package:flutter_tools/src/macos/xcdevice.dart';
+import 'package:flutter_tools/src/macos/xcode.dart';
 import 'package:test/fake.dart';
 import 'package:unified_analytics/unified_analytics.dart';
 
@@ -520,6 +521,7 @@ void main() {
           device: device,
           app: appPackage,
           iMobileDevice: IMobileDevice.test(processManager: FakeProcessManager.any()),
+          xcode: FakeXcode(),
         );
         logReader.idevicesyslogProcess = process;
         return logReader;
@@ -1131,3 +1133,8 @@ class FakeIOSCoreDeviceControl extends Fake implements IOSCoreDeviceControl {}
 class FakeIOSCoreDeviceLauncher extends Fake implements IOSCoreDeviceLauncher {}
 
 class FakeAnalytics extends Fake implements Analytics {}
+<<<<<<< HEAD
+=======
+
+class FakeXcode extends Fake implements Xcode {}
+>>>>>>> f5a8537f90d143abd5bb2f658fa69c388da9677b

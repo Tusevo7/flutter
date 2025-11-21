@@ -10,6 +10,7 @@ import 'package:flutter_tools/src/base/file_system.dart';
 import 'package:flutter_tools/src/base/logger.dart';
 import 'package:flutter_tools/src/base/platform.dart';
 import 'package:flutter_tools/src/base/signals.dart';
+import 'package:flutter_tools/src/project.dart';
 import 'package:flutter_tools/src/widget_preview/analytics.dart';
 import 'package:flutter_tools/src/widget_preview/dependency_graph.dart';
 import 'package:flutter_tools/src/widget_preview/preview_detector.dart';
@@ -49,6 +50,8 @@ PreviewDetector createTestPreviewDetector() {
     throw StateError('$initializeTestPreviewDetectorState was not called!');
   }
   _projectRoot = _fs.systemTempDirectory.createTempSync('root');
+  final FlutterProject project = FlutterProject.fromDirectoryTest(_projectRoot!);
+
   return PreviewDetector(
     platform: FakePlatform(),
     previewAnalytics: WidgetPreviewAnalytics(
@@ -59,7 +62,7 @@ PreviewDetector createTestPreviewDetector() {
         fs: MemoryFileSystem.test(),
       ),
     ),
-    projectRoot: _projectRoot!,
+    project: project,
     logger: BufferLogger.test(),
     fs: _fs,
     onChangeDetected: _onChangeDetectedRoot,
@@ -122,7 +125,7 @@ Future<String> waitForPubspecChangeDetected({required void Function() changeOper
 /// Invokes [onChangeDetected] when a change is detected before the returned future is completed.
 Future<void> waitForChangeDetected({
   required void Function(PreviewDependencyGraph) onChangeDetected,
-  required void Function() changeOperation,
+  required FutureOr<void> Function() changeOperation,
 }) async {
   final completer = Completer<void>();
   _onChangeDetectedImpl = (PreviewDependencyGraph updated) {
@@ -132,7 +135,7 @@ Future<void> waitForChangeDetected({
     onChangeDetected(updated);
     completer.complete();
   };
-  changeOperation();
+  await changeOperation();
   await completer.future;
 }
 
@@ -213,3 +216,8 @@ void expectPreviewDependencyGraphIsWellFormed({
 
 String platformPath(List<String> pathSegments) =>
     pathSegments.join(const LocalPlatform().pathSeparator);
+
+extension ScriptHelper on String {
+  String get stripScriptUris =>
+      replaceAll(RegExp(r"scriptUri:\s*'file:\/\/\/\S*',"), "scriptUri: 'STRIPPED',");
+}

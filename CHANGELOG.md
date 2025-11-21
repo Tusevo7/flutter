@@ -30,6 +30,7 @@ More information and tips:
 docs/releases/Hotfix-Documentation-Best-Practices.md
 -->
 
+<<<<<<< HEAD
 ## Flutter 3.35 Changes
 
 ### [3.35.7](https://github.com/flutter/flutter/releases/tag/3.35.7)
@@ -42,6 +43,31 @@ docs/releases/Hotfix-Documentation-Best-Practices.md
 - [flutter/175669](https://github.com/flutter/flutter/issues/175669) `flutter analyze --suggestions` supports versions up to Java 25, Gradle 9 and AGP 9, Kotlin 2.2.20.
 - [flutter/172624](https://github.com/flutter/flutter/issues/172624) Fixes an issue that could result in a corrupt pipeline cache when using the Impeller Vulkan back end.
 
+=======
+## Flutter 3.38 Changes
+
+### [3.38.2](https://github.com/flutter/flutter/releases/tag/3.38.2)
+
+- [flutter/178472](https://github.com/flutter/flutter/issues/178472) Widget preview command can crash on exit if in the middle of analyzing changes to a Dart file.
+- [flutter/178452](https://github.com/flutter/flutter/issues/178452) Flutter fails to build on iOS with error message: "Improperly formatted define flag" in add-to-app scenarios.
+- [flutter/178486](https://github.com/flutter/flutter/issues/178486) When running flutter widget-preview start with Flutter Web disabled, an exception is thrown and the widget previewer fails to start.
+- [flutter/178317](https://github.com/flutter/flutter/issues/178317) Running flutter pub get can crash the widget previewer when plugin dependencies are added or updated.
+- [flutter/178318](https://github.com/flutter/flutter/issues/178318) Certain flutter crash scenarios can result in multiple crash reports being submitted for a single process crash.
+- [flutter/176399](https://github.com/flutter/flutter/issues/176399) Visual Studio 2026 is not supported when compiling Windows desktop applications.
+- [flutter/175058](https://github.com/flutter/flutter/issues/175058) The widget previewer fails to start if flutter pub get has not been run in the target project.
+- [flutter/178421](https://github.com/flutter/flutter/issues/178421) When debugging from an IDE with a physical iOS 26 device, IDE installs an app but hangs on a white screen during launching.
+
+### [3.38.1](https://github.com/flutter/flutter/releases/tag/3.38.1)
+
+- [flutter/178400](https://github.com/flutter/flutter/issues/178400) Adds support for Dart 3.10 stable.
+
+### [3.38.0](https://github.com/flutter/flutter/releases/tag/3.38.0)
+
+Learn about what's new in this release in [the blog post](https://blog.flutter.dev/whats-new-in-flutter-3-38-3f7b258f7228), and check out the [CHANGELOG](https://docs.flutter.dev/release/release-notes/release-notes-3.38.0) for a detailed list of all the new changes.
+
+## Flutter 3.35 Changes
+
+>>>>>>> f5a8537f90d143abd5bb2f658fa69c388da9677b
 ### [3.35.5](https://github.com/flutter/flutter/releases/tag/3.35.5)
 
  - [flutter/172105](https://github.com/flutter/flutter/issues/172105) Flutter view no longer hangs after multiple transitions on iOS add-to-app.
@@ -80,9 +106,23 @@ docs/releases/Hotfix-Documentation-Best-Practices.md
 ### [3.35.0](https://github.com/flutter/flutter/releases/tag/3.35.0)
 
 Initial stable release.
+<<<<<<< HEAD
 [Learn what's new in Flutter 3.35](https://medium.com/flutter/whats-new-in-flutter-3-35-c58ef72e3766).
+=======
+>>>>>>> f5a8537f90d143abd5bb2f658fa69c388da9677b
 
 ## Flutter 3.32 Changes
+
+### [3.32.8](https://github.com/flutter/flutter/releases/tag/3.32.8)
+
+- [flutter/150131](https://github.com/flutter/flutter/issues/150131) iOS users on macOS 15 may see a tool crash if permissions are missing. Can work around by enabling mDNS permissions.
+- [flutter/155294](https://github.com/flutter/flutter/issues/155294) [flutter/169506](https://github.com/flutter/flutter/issues/169506) On android Add a new api for requesting a new surface from the embedder that is different from any previously returned.
+- [flutter/172602](https://github.com/flutter/flutter/pull/172602)  Do not call hasUnifiedMemory that was introduced in macOS 10.15 on versions before 10.15.
+- [flutter/172250](https://github.com/flutter/flutter/issues/172250) `TextInput.hide` call incorrectly clears the text in the active text field on iOS.
+
+### [3.32.7](https://github.com/flutter/flutter/releases/tag/3.32.7)
+
+- [flutter/172121](https://github.com/flutter/flutter/pull/172121) - Fix iOS images replaced with pink fill when coming out of background.
 
 ### [3.32.6](https://github.com/flutter/flutter/releases/tag/3.32.6)
 
